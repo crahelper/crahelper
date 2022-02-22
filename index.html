@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <script src="crahelperApp.js"></script>
+    <script src="jquery-3.6.0.min.js"></script>
+</header>
+<body>
+    <label>จำนวนยาที่จ่าย:</label><br>
+    <input type="number" id="amtDrugPay" width="5" style="width: 50px;"><br><br>
+    <label>จำนวนยาที่นำมาคืน:</label><br>
+    <input type="number" id="amtDrugReturn" style="width: 50px;"><br><br>
+    <label>วันที่จ่ายยา:</label><br>
+    <input type="date" id="dateStart"><br><br>
+    <label>มื้อแรกที่กินยา</label><br>
+    <input type="radio" id="morning" name="mealStart" value="1">
+    <label for="morning">เช้า</label>
+    <input type="radio" id="lunch" name="mealStart" value="2">
+    <label for="lunch">กลางวัน</label>
+    <input type="radio" id="evening" name="mealStart" value="3">
+    <label for="evening">เย็น</label>
+    <input type="radio" id="night" name="mealStart" value="4">
+    <label for="night">ก่อนนอน</label><br><br>
+    <label>วันที่คืนยา:</label><br>
+    <input type="date" id="dateEnd"><br><br>
+    <label>มื้อที่หยุดยา</label><br>
+    <input type="radio" id="today" name="mealStop" value="1">
+    <label for="today">เช้าวันนี้</label>
+    <input type="radio" id="yesterday" name="mealStop" value="0">
+    <label for="yesterday">เมื่อวาน</label><br><br>
+    <label>จำนวนยาแต่ละมื้อ</label><br>
+    <label>มื้อเช้า (เม็ด) :</label><br>
+    <input type="number" id="morningDrug" style="width: 50px;"><br>
+    <label>มื้อเที่ยง (เม็ด) :</label><br>
+    <input type="number" id="lunchDrug" style="width: 50px;"><br>
+    <label>มื้อเย็น (เม็ด) :</label><br>
+    <input type="number" id="eveningDrug" style="width: 50px;"><br>
+    <label>มื้อก่อนนอน (เม็ด) :</label><br>
+    <input type="number" id="nightDrug" style="width: 50px;"><br><br>
+    
+<!----------------------------- On Hold Part ------------------------------->
+
+    <input type="checkbox" id="onHoldCheckBox" name="onHoldCheckBox" onclick="toggleTable('onHold')" /><label> On Hold</label>
+    <table id="onHold"  style="display:none">
+        <tr>
+            <td class="LABEL">วันที่เริ่ม On Hold<br>
+            <input type="date" id="holdDateStart"></td>
+        </tr>
+        <tr>
+            <td class="LABEL">มื้อที่เริ่ม On Hold
+            <br>
+                <input type="radio" id="morning" name="mealHold" value="1">
+                <label for="morning">เช้า</label>
+                <input type="radio" id="lunch" name="mealHold" value="2">
+                <label for="lunch">กลางวัน</label>
+                <input type="radio" id="evening" name="mealHold" value="3">
+                <label for="evening">เย็น</label>
+                <input type="radio" id="night" name="mealHold" value="4">
+                <label for="night">ก่อนนอน</label>
+            </td>
+        </tr>
+        <tr>
+            <td class="LABEL">วันที่  ReStart<br>
+            <input type="date" id="holdReDateStart"></td>
+        </tr>
+        <tr>
+            <td class="LABEL">มื้อที่ ReStart
+            <br>
+                <input type="radio" id="morning" name="mealReHold" value="1">
+                <label for="morning">เช้า</label>
+                <input type="radio" id="lunch" name="mealReHold" value="2">
+                <label for="lunch">กลางวัน</label>
+                <input type="radio" id="evening" name="mealReHold" value="3">
+                <label for="evening">เย็น</label>
+                <input type="radio" id="night" name="mealReHold" value="4">
+                <label for="night">ก่อนนอน</label>
+            </td>
+        </tr>
+    </table>
+    <br>
+
+<!----------------------------- On Change Part ------------------------------->
+
+    <input type="checkbox" id="onChangeCheckBox" onclick="toggleTable('onChange')" /><label> Change ไปเลย</label>
+    <table id="onChange" style="display:none">
+        <tr>
+            <td class="LABEL">วันที่เปลี่ยน :<br>
+            <input type="date" id="changeDateStart"></td>
+        </tr>
+        <tr>
+            <td class="LABEL">มื้อที่เริ่มเปลี่ยน :
+            <br>
+                <input type="radio" id="morning" name="mealChange" value="1">
+                <label for="morning">เช้า</label>
+                <input type="radio" id="lunch" name="mealChange" value="2">
+                <label for="lunch">กลางวัน</label>
+                <input type="radio" id="evening" name="mealChange" value="3">
+                <label for="evening">เย็น</label>
+                <input type="radio" id="night" name="mealChange" value="4">
+                <label for="night">ก่อนนอน</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>จำนวนยาใหม่ต่อมื้อ</label><br>
+                <label>มื้อเช้า (เม็ด) :</label><br>
+                <input type="number" id="morningDrugChange" style="width: 50px;"><br>
+                <label>มื้อเที่ยง (เม็ด) :</label><br>
+                <input type="number" id="lunchDrugChange" style="width: 50px;"><br>
+                <label>มื้อเย็น (เม็ด) :</label><br>
+                <input type="number" id="eveningDrugChange" style="width: 50px;"><br>
+                <label>มื้อก่อนนอน (เม็ด) :</label><br>
+                <input type="number" id="nightDrugChange" style="width: 50px;"><br><br>
+            </td>
+        </tr>
+    </table>
+    <br>
+
+<!----------------------------- On Change Back Part ------------------------------->
+
+    <input type="checkbox" id='onChangeBackCheckBox' onclick="toggleTable('onChangeBack')" /><label> Change Between</label>
+    <table id="onChangeBack" style="display:none">
+        <tr>
+            <td class="LABEL">วันที่เปลี่ยน :<br>
+            <input type="date" id="changeBackDateStart"></td>
+        </tr>
+        <tr>
+            <td class="LABEL">มื้อที่เริ่มเปลี่ยน :
+            <br>
+                <input type="radio" id="morning" name="mealChangeBack" value="1">
+                <label for="morning">เช้า</label>
+                <input type="radio" id="lunch" name="mealChangeBack" value="2">
+                <label for="lunch">กลางวัน</label>
+                <input type="radio" id="evening" name="mealChangeBack" value="3">
+                <label for="evening">เย็น</label>
+                <input type="radio" id="night" name="mealChangeBack" value="4">
+                <label for="night">ก่อนนอน</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>จำนวนยาใหม่ต่อมื้อ</label><br>
+                <label>มื้อเช้า (เม็ด) :</label><br>
+                <input type="number" id="morningDrugChangeBack" style="width: 50px;"><br>
+                <label>มื้อเที่ยง (เม็ด) :</label><br>
+                <input type="number" id="lunchDrugChangeBack" style="width: 50px;"><br>
+                <label>มื้อเย็น (เม็ด) :</label><br>
+                <input type="number" id="eveningDrugChangeBack" style="width: 50px;"><br>
+                <label>มื้อก่อนนอน (เม็ด) :</label><br>
+                <input type="number" id="nightDrugChangeBack" style="width: 50px;"><br>
+            </td>
+        </tr>
+        <tr>
+            <td class="LABEL">วันที่กลับไปใช้โดสเดิม<br>
+            <input type="date" id="changeBackDateEnd"></td>
+        </tr>
+        <tr>
+            <td class="LABEL">มื้อที่เริ่มเปลี่ยน :
+            <br>
+                <input type="radio" id="morning" name="mealChangeBackEnd" value="1">
+                <label for="morning">เช้า</label>
+                <input type="radio" id="lunch" name="mealChangeBackEnd" value="2">
+                <label for="lunch">กลางวัน</label>
+                <input type="radio" id="evening" name="mealChangeBackEnd" value="3">
+                <label for="evening">เย็น</label>
+                <input type="radio" id="night" name="mealChangeBackEnd" value="4">
+                <label for="night">ก่อนนอน</label>
+            </td>
+        </tr>
+    </table>
+    <br>
+
+    <p><input type="button" value="Submit" onclick="calPercentCompliance();" /></p>
+
+    <p id="variable"></p>
+    <p id="compliance">----------</p>   
+
+</body>
+</html>
