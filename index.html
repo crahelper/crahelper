@@ -1,6 +1,7 @@
 <header>
     <script src="crahelperApp.js"></script>
     <title>CRA Helper Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style type="text/css">
         .header {
             padding: 30px;
@@ -24,6 +25,7 @@
             <td class="fronttab">&emsp;</td>
             <td>&emsp;</td>
             <td>
+                <br>
                 <label>จำนวนยาที่จ่าย:</label><br>
                 <input type="number" id="amtDrugPay" width="5" style="width: 50px;"><br><br>
                 <label>จำนวนยาที่นำมาคืน:</label><br>
@@ -186,16 +188,15 @@
                         </td>
                     </tr>
                 </table>
-                <br>
-
-                <p><input type="button" value="Submit" onclick="calPercentCompliance();" /></p>
+                <br><br>
+                <p><button type="button" class="btn btn-success">Calc</button></p>
+                
 
                 <p id="variable"></p>
                 <p id="compliance">----------</p>   
 
             </td>
         </tr>
-    <br><br><br>
     </table>
     
 </body>
